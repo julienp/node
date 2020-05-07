@@ -130,6 +130,12 @@ NgHeader<T>::NgHeader(
 }
 
 template <typename T>
+void NgHeader<T>::MemoryInfo(MemoryTracker* tracker) const {
+  tracker->TrackField("name", name_);
+  tracker->TrackField("value", value_);
+}
+
+template <typename T>
 NgHeader<T>::NgHeader(NgHeader<T>&& other) noexcept
     : name_(std::move(other.name_)),
       value_(std::move(other.value_)),
